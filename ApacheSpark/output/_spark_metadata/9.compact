@@ -1,0 +1,11 @@
+v1
+{"path":"file:///home/jovyan/work/output/part-00000-2cfc97ec-6e7a-4465-bc25-569710406eba-c000.csv","size":0,"isDir":false,"modificationTime":1688983887000,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/jovyan/work/output/part-00000-5c161547-2e55-4d01-bf41-f5d3cc76b762-c000.csv","size":12,"isDir":false,"modificationTime":1688983892000,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/jovyan/work/output/part-00000-652fd1a1-8a22-4ef0-bbc8-bd4b639f6b75-c000.csv","size":12,"isDir":false,"modificationTime":1688983897000,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/jovyan/work/output/part-00000-3d955db6-c31b-4918-8947-3a078d4353f3-c000.csv","size":11,"isDir":false,"modificationTime":1688983902000,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/jovyan/work/output/part-00000-c3c0df48-05df-4eff-94f4-2eb8c04b32c4-c000.csv","size":11,"isDir":false,"modificationTime":1688983907000,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/jovyan/work/output/part-00000-a474b93f-4ff9-4a3b-93ec-6b2d667723e4-c000.csv","size":12,"isDir":false,"modificationTime":1688984073000,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/jovyan/work/output/part-00000-cede6d28-b3e3-46b0-b959-297cbd367b86-c000.csv","size":12,"isDir":false,"modificationTime":1688984078000,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/jovyan/work/output/part-00000-267c90e2-d952-4453-bfe8-2af2f9dc16be-c000.csv","size":12,"isDir":false,"modificationTime":1688984083000,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/jovyan/work/output/part-00000-d0f92644-75db-4b63-a5c8-4c3c97077ff0-c000.csv","size":12,"isDir":false,"modificationTime":1688984088000,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/jovyan/work/output/part-00000-8ff37276-ec08-4e88-a593-fd4cdb665938-c000.csv","size":12,"isDir":false,"modificationTime":1688984093000,"blockReplication":1,"blockSize":33554432,"action":"add"}

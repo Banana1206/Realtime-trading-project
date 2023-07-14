@@ -1,0 +1,52 @@
+# tạo 1 topic mới
+docker exec -it realtime-trading-project-kafka-1 kafka-topics.sh --create --topic my-topic2 --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092
+
+    realtime-trading-project-kafka-1: Tên của container Kafka đang chạy.
+    my-topic: Tên của topic mới.
+    --partitions 1: Số partition cho topic (ở đây là 1).
+    --replication-factor 1: Số lượng replica cho mỗi partition (ở đây là 1).
+    --bootstrap-server localhost:9092: Địa chỉ và cổng của Kafka broker bootstrap.
+
+# Tạo producer để gửi tin nhắn vào topic
+docker exec -it realtime-trading-project-kafka-1 kafka-console-producer.sh --topic my-topic --bootstrap-server localhost:9092
+
+
+# Tạo consumer để đọc tin nhắn từ topic
+docker exec -it realtime-trading-project-kafka-1 kafka-console-consumer.sh --topic my-topic --bootstrap-server localhost:9092 --from-beginning
+
+    realtime-trading-project-kafka-1: Tên của container Kafka đang chạy.
+    my-topic: Tên của topic để đọc tin nhắn từ.
+    --bootstrap-server localhost:9092: Địa chỉ và cổng của Kafka broker bootstrap.
+    --from-beginning: Đọc tin nhắn từ đầu của topic.
+
+# liệt kê danh sách các topic
+docker exec -it realtime-trading-project-kafka-1 kafka-topics.sh --list --bootstrap-server localhost:9092
+
+# Xem thông tin chi tiết của một topic:
+docker exec -it realtime-trading-project-kafka-1 kafka-topics.sh --describe --topic my-topic --bootstrap-server localhost:9092
+
+# Xóa một topic:
+docker exec -it realtime-trading-project-kafka-1 kafka-topics.sh --delete --topic my-topic --bootstrap-server localhost:9092
+
+# Tạo một consumer group mới:
+docker exec -it realtime-trading-project-kafka-1 kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group my-group --reset-offsets --topic my-topic --to-earliest --execute
+    --bootstrap-server localhost:9092: Địa chỉ và cổng của Kafka broker bootstrap.
+    --group my-group: Tên của consumer group mới.
+    --reset-offsets: Đặt lại offset của consumer group.
+    --topic my-topic: Tên của topic mà consumer group sẽ tiêu thụ.
+    --to-earliest: Đặt offset của consumer group về vị trí đầu tiên của topic.
+    --execute: Thực thi việc đặt lại offset.
+
+# xem thông tin consumer group
+docker exec -it realtime-trading-project-kafka-1 kafka-consumer-groups.sh --describe --bootstrap-server localhost:9092 --group my-group
+
+
+====================
+# tạo 1 topic mới để đưa vào group
+docker exec -it realtime-trading-project-kafka-1 kafka-topics.sh --create --topic my-topic2 --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092
+
+# liệt kê danh sách các group:
+docker exec -it realtime-trading-project-kafka-1 kafka-consumer-groups.sh --list --bootstrap-server localhost:9092
+
+# đưa consumer topic2 vào my-group
+docker exec -it realtime-trading-project-kafka-1 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic my-topic2 --group my-group

@@ -1,0 +1,46 @@
+version: "3"
+services:
+
+  zookeeper:
+    image: 'bitnami/zookeeper:latest'
+    ports:
+      - '2181:2181'
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - realtime-trading-project
+
+  kafka:
+    image: 'bitnami/kafka:latest'
+    ports:
+      - '9092:9092'
+      
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+
+      # - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      # - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      # - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093,CONTROLLER://:9094
+      # - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093,CONTROLLER://localhost:9094
+      # - KAFKA_INTER_BROKER_LISTENER_NAME=CLIENT
+      # - KAFKA_CONTROLLER_LISTENERS=CONTROLLER://:9094
+      # - KAFKA_CONTROLLER_INITIAL_BROKER_LIST=localhost:9094
+    depends_on:
+      - zookeeper
+    networks:
+      - realtime-trading-project
+
+  # spark:
+  #   image: 'jupyter/pyspark-notebook:spark-2'
+  #   ports:
+  #     - '8888:8888'
+  #     - "4040-4080:4040-4080"
+  #   volumes:
+  #     - ./ApacheSpark/:/home/jovyan/work
+  #   networks:
+  #     - realtime-trading-project
+
+networks:
+  realtime-trading-project:
+    driver: bridge
