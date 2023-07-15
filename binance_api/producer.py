@@ -46,6 +46,28 @@ def create_data_dict(data):
     
     return data_dict
 
+def create_train_data(data):
+    listData = []
+    listData.append(round(float(data[4]), 3))
+    listData.append(round(float(data[5]), 3))
+    listData.append(round(float(data[8]), 3))
+    listData.append(round(float(data[9]), 3))
+
+    if data[12] == "BTCUSDT":
+        listData.append(0)
+    elif data[12] == "ETHUSDT":
+        listData.append(1)
+    elif data[12] == "BNBUSDT":
+        listData.append(2)
+    elif data[12] == "XRPUSDT":
+        listData.append(3)
+    else:
+        listData.append(4)
+
+    return listData
+
+    
+
 
 def save_to_json(data, pairs):
     file_name = "data.json"
@@ -96,8 +118,8 @@ if __name__ == "__main__":
     
      # Initialize producer
     bootstrap_servers = 'localhost:9091'
-    topic = 'trading4'
-    producer = Producer({'bootstrap.servers': bootstrap_servers})
+    topic = 'thao_loz'
+    producer = Producer({'bootstrap.servers': bootstrap_servers},)
 
     data = [] # contain data with windowsize =5
     while True:
@@ -106,20 +128,23 @@ if __name__ == "__main__":
         for pair in trading_pairs:
             pair_data = client.get_historical_klines(pair, Client.KLINE_INTERVAL_3MINUTE, "3 min ago UTC")
             pair_data[0].append(pair)
-            sub_data.append(create_data_dict(pair_data[0]))
-            print(create_data_dict(pair_data[0]))
-            # send_data_to_kafka(producer, topic, create_data_dict(pair_data[0]))
+            sub_data.append(create_train_data(pair_data[0]))
+  
+        if(len(data)==5):
+            data.pop(0)
+            data.append(sub_data)
+            send_data = json.dumps(data).encode('utf-8')
+            send_data_to_kafka(producer, topic, send_data)
+            print(send_data)
             
-        # if(len(data)==5):
-        #     data.pop(0)
-        #     data.append(sub_data)
-        # else:
-        #     data.append(sub_data)
+        else:
+            data.append(sub_data)
         
-        send_data_to_kafka(producer, topic, json.dumps(sub_data).encode('utf-8'))
+        
+        
+        # send_data_to_kafka(producer, topic, df)
         # print(json.dumps(data).encode('utf-8'))
-        # print(np.array(sub_data))
         # break
         
         # break
-        time.sleep(3)
+        time.sleep(1)

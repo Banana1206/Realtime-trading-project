@@ -9,9 +9,6 @@ services:
       ZOO_MY_ID: 1
       ZOO_PORT: 2181
       ZOO_SERVERS: server.1=zookeeper:2888:3888
-    volumes:
-      - ./data/zookeeper/data:/data
-      - ./data/zookeeper/datalog:/datalog
   kafka1:
     image: confluentinc/cp-kafka:5.3.0
     hostname: kafka1
@@ -23,8 +20,6 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
       KAFKA_BROKER_ID: 1
-    volumes:
-      - ./data/kafka1/data:/var/lib/kafka/data
     depends_on:
       - zookeeper
   kafka2:
@@ -38,8 +33,6 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_BROKER_ID: 2
-    volumes:
-      - ./data/kafka2/data:/var/lib/kafka/data
     depends_on:
       - zookeeper 
   kafka3:
@@ -53,8 +46,6 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
       KAFKA_BROKER_ID: 3
-    volumes:
-      - ./data/kafka3/data:/var/lib/kafka/data
     depends_on:
       - zookeeper
   kafdrop:
