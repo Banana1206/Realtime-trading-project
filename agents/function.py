@@ -19,12 +19,22 @@ def formatPrice(n):
 #     return df
 
 def getStockDataVec():
-    df = pd.read_csv("./data/full_data.csv")
+    df = pd.read_csv("./data/data_2021.csv")
     df = df[['open_time', 'close', 'volume', 'count', 'taker_buy_volume', 'symbol']]
     df.set_index('open_time', inplace=True)
-    symbol_mapping = {'ADABUSD': 0, 'ETHBUSD': 1, 'BNBBUSD': 2, 'BTCBUSD': 3, 'DOTBUSD': 4}
+    symbol_mapping = {'BNBUSDT': 0, 'BTCUSDT': 1, 'ETHUSDT': 2, 'LTCUSDT': 3, 'XRPUSDT': 4}
     df['symbol'] = df['symbol'].map(symbol_mapping).fillna(df['symbol'])
     return df
+
+def getTestStockDataVec(path):
+    df = pd.read_csv(path)
+    df = df[['open_time', 'close', 'volume', 'count', 'taker_buy_volume', 'symbol']]
+    df.set_index('open_time', inplace=True)
+    symbol_mapping = {'BNBUSDT': 0, 'BTCUSDT': 1, 'ETHUSDT': 2, 'LTCUSDT': 3, 'XRPUSDT': 4}
+    df['symbol'] = df['symbol'].map(symbol_mapping).fillna(df['symbol'])
+    return df
+
+
 
 def getState(data, t, n):
     d = t - n + 1

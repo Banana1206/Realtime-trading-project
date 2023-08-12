@@ -52,7 +52,7 @@ async def main():
             data.pop(0)
             data.append(sub_data)
             send_data = json.dumps(data).encode('utf-8')
-            await send_data_to_kafka(producer, topic, send_data)
+            # await send_data_to_kafka(producer, topic, send_data)
             print(send_data)
             await asyncio.sleep(5)
         else:

@@ -1,5 +1,0 @@
-numpy
-torch
-pandas
-matplotlib
-docker-compose-kafka-spark.yml

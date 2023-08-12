@@ -2,4 +2,4 @@ findspark
 confluent-kafka
 
 # interval batchsize
-https://stackoverflow.com/questions/57760563/how-to-specify-batch-interval-in-spark-structured-streaming
+# https://stackoverflow.com/questions/57760563/how-to-specify-batch-interval-in-spark-structured-streaming

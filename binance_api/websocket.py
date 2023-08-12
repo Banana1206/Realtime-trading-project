@@ -11,9 +11,9 @@ async def listen():
         while True:
             msg = await ws.recv()
             print("=============")
-            print(msg.c)
-            await asyncio.sleep(1)
-        s
+            print(msg)
+            # await asyncio.sleep(1)
+        
 asyncio.get_event_loop().run_until_complete(listen())
 
 

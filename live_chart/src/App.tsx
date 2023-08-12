@@ -1,11 +1,19 @@
 import React from 'react';
 import TradeViewChart from 'react-crypto-chart';
 import './App.css';
+import WebSocketComponent from './sparkRecieve/sparkRecieve';
 
 export default function App() {
+
+  // const client = new WebSocket("ws://localhost:8765");
+  // client.onmessage = (message) => {
+  //   console.log(message.data)
+  // };
+
+
   return (
     <div className="parent">
-      <h3>BTC/USDT</h3>
+      <h3>BTC/USDT</h3>s
       <TradeViewChart
         containerStyle={{
           minHeight: '400px',
@@ -13,6 +21,8 @@ export default function App() {
           marginBottom: '30px',
         }}
         pair="BTCUSDT"/>
+
+  {/* <WebSocketComponent /> */}
       {/* <h3>ADA/USDT</h3>
       <TradeViewChart
         containerStyle={{
@@ -31,6 +41,8 @@ export default function App() {
         }}
         pair="ETHUSDT"
       /> */}
+
+
     </div>
   );
 }
