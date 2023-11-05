@@ -3,7 +3,7 @@
 The project's objective is to develop and contrast trading reinforcement learning algorithms using Linear-DQN and LSTM-DQN. Additionally, it involves the integration of real-time and continuous learning by combining Kafka and Apache Spark.
 
 ## Overview
-![Project overview](./agents/asset2/flowBig2.png)
+![Project overview](./agents/asset2/flowBig2.png)\
 In this project, we retrieve data from the Binance API websocket. Subsequently, this data is transmitted via Kafka to Spark. Spark then invokes a model for processing, performs automated buying and selling, and continues the training process. Following this, the buy or sell orders are sent back to the exchange, and the order placement data is stored in a Cassandra database.
 
 ## Install
